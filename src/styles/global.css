@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-display {
+  font-family: "Baloo 2", "Inter", sans-serif;
+}
+.font-sans {
+  font-family: "Inter", sans-serif;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes bounceShort {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+.animate-bounce-short {
+  animation: bounceShort 0.6s ease-in-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeSlide {
+  from {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.animate-fade-slide {
+  animation: fadeSlide 0.25s ease-out;
+}
+
+@keyframes scooterRide {
+  0% {
+    left: 0%;
+    transform: translateY(-50%) scaleX(1);
+  }
+  48% {
+    left: calc(100% - 40px);
+    transform: translateY(-50%) scaleX(1);
+  }
+  50% {
+    left: calc(100% - 40px);
+    transform: translateY(-50%) scaleX(-1);
+  }
+  98% {
+    left: 0%;
+    transform: translateY(-50%) scaleX(-1);
+  }
+  100% {
+    left: 0%;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+.scooter-ride {
+  position: absolute;
+  animation: scooterRide 2.2s ease-in-out infinite;
+}
+
+@keyframes dotBounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-dot {
+  animation: dotBounce 1s infinite ease-in-out;
+}
+
+.tick-circle {
+  stroke-dasharray: 151;
+  stroke-dashoffset: 151;
+  animation: drawCircle 0.5s ease-out forwards;
+}
+.tick-check {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: drawCheck 0.35s ease-out 0.45s forwards;
+}
+@keyframes drawCircle {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.tick-pop {
+  transform: scale(0);
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes popIn {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes cardPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(249, 115, 22, 0);
+  }
+}
+.animate-pulse-ring {
+  animation: cardPulse 0.6s ease-out;
+}
