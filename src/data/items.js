@@ -20,12 +20,12 @@ import chocolateBrownie from "../assets/images/chocolate-brownie.png";
 import iceCreamSundae from "../assets/images/icecream-sundae.png";
 
 export const CATEGORIES = [
-  { id: "all", label: "All", emoji: "✨" },
-  { id: "beverages", label: "Beverages", emoji: "🥤" },
-  { id: "snacks", label: "Snacks", emoji: "🍟" },
-  { id: "rice", label: "Rice", emoji: "🍚" },
-  { id: "main", label: "Main Course", emoji: "🍛" },
-  { id: "desserts", label: "Desserts", emoji: "🍰" },
+  { id: "all", label: "All" },
+  { id: "beverages", label: "Beverages" },
+  { id: "snacks", label: "Snacks" },
+  { id: "rice", label: "Rice" },
+  { id: "main", label: "Main Course" },
+  { id: "desserts", label: "Desserts" },
 ];
 
 export const SORT_OPTIONS = [

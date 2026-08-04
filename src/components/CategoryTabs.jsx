@@ -2,12 +2,7 @@ import React from "react";
 import { SlidersHorizontal } from "lucide-react";
 import { CATEGORIES, SORT_OPTIONS } from "../data/items.js";
 
-export default function CategoryTabs({
-  category,
-  setCategory,
-  sortBy,
-  setSortBy,
-}) {
+export default function CategoryTabs({ category, setCategory, sortBy, setSortBy }) {
   return (
     <div className="sticky top-[72px] md:top-[72px] z-20 bg-orange-50/95 backdrop-blur border-b border-orange-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-2">
