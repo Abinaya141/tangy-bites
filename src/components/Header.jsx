@@ -1,71 +1,40 @@
-// import React from "react";
-// import { ShoppingCart, Search } from "lucide-react";
-
-// export default function Header({ query, setQuery, cartCount, onCartClick }) {
-//   return (
-//     <header className="sticky top-0 z-30 bg-gradient-to-r from-orange-500 to-orange-400 shadow-md">
-//       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-//         <div className="flex items-center gap-2 shrink-0">
-//           <span className="text-3xl leading-none select-none">🍊</span>
-//           <div className="leading-tight">
-//             <h1 className="text-white font-extrabold text-xl sm:text-2xl tracking-tight font-display">
-//               #TangyBites
-//             </h1>
-//             <p className="text-orange-100 text-xs hidden sm:block">
-//               Fresh food, delivered fast 🛵💨
-//             </p>
-//           </div>
-//         </div>
-
-//         <div className="flex-1 max-w-md hidden md:flex items-center bg-white/95 rounded-xl px-4 py-2 shadow-inner">
-//           <Search size={18} className="text-orange-400 shrink-0" />
-//           <input
-//             value={query}
-//             onChange={(e) => setQuery(e.target.value)}
-//             placeholder="Search dishes, drinks, snacks… 🔍"
-//             className="w-full bg-transparent outline-none px-2 text-sm placeholder:text-stone-400"
-//           />
-//         </div>
-
-//         <button
-//           onClick={onCartClick}
-//           className="relative flex items-center gap-2 bg-white text-orange-600 font-bold px-4 py-2.5 rounded-xl shadow hover:bg-orange-50 active:scale-95 transition"
-//         >
-//           <ShoppingCart size={19} />
-//           <span className="hidden sm:inline text-sm">Cart</span>
-//           {cartCount > 0 && (
-//             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-[11px] font-bold w-5 h-5 rounded-xl flex items-center justify-center animate-bounce-short">
-//               {cartCount}
-//             </span>
-//           )}
-//         </button>
-//       </div>
-
-//       <div className="md:hidden px-4 pb-3">
-//         <div className="flex items-center bg-white/95 rounded-xl px-4 py-2 shadow-inner">
-//           <Search size={17} className="text-orange-400 shrink-0" />
-//           <input
-//             value={query}
-//             onChange={(e) => setQuery(e.target.value)}
-//             placeholder="Search dishes… 🔍"
-//             className="w-full bg-transparent outline-none px-2 text-sm placeholder:text-stone-400"
-//           />
-//         </div>
-//       </div>
-//     </header>
-//   );
-// }
-
 import React, { useState } from "react";
-import { MapPin, Search, ChevronDown, Zap } from "lucide-react";
+import {
+  MapPin,
+  Search,
+  ChevronDown,
+  Zap,
+  Star,
+  Clock3,
+  Truck,
+  ArrowRight,
+  Sparkles,
+  BadgePercent,
+} from "lucide-react";
+
 import heroImage from "../assets/images/hero-image.png";
-// import rightHeroImage from "../assets/drink.png";
+import rightHeroImage from "../assets/images/hero-right.png";
 
 const LOCATIONS = [
-  "Home — Adyar, Chennai",
-  "Work — Guindy, Chennai",
+  "Home - Adyar, Chennai",
+  "Work - Guindy, Chennai",
   "T. Nagar, Chennai",
   "Velachery, Chennai",
+];
+
+const QUICK_TAGS = [
+  {
+    icon: BadgePercent,
+    text: "Up to 60% OFF",
+  },
+  {
+    icon: Star,
+    text: "4.8 Rated",
+  },
+  {
+    icon: Truck,
+    text: "Free Delivery",
+  },
 ];
 
 export default function Hero({ query, setQuery }) {
@@ -73,152 +42,570 @@ export default function Hero({ query, setQuery }) {
   const [locOpen, setLocOpen] = useState(false);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-orange-600 via-orange-500 to-amber-400">
-      <style>{`
-    @keyframes tb-float {
-      0%,100%{transform:translateY(0);}
-      50%{transform:translateY(-10px);}
-    }
+    <section className="relative isolate overflow-hidden bg-gradient-to-br from-[#ea580c] via-[#f97316] to-[#c2410c]">
+      {/* Background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -left-40 -top-40 h-[400px] w-[400px] rounded-full bg-yellow-300/15 blur-3xl" />
 
-    .tb-float{
-      animation:tb-float 5s ease-in-out infinite;
-    }
-  `}</style>
+        <div className="absolute -right-40 -top-20 h-[450px] w-[450px] rounded-full bg-yellow-200/15 blur-3xl" />
 
-      {/* Background Glow */}
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-500/20 blur-3xl rounded-full" />
+        <div className="absolute bottom-[-250px] left-1/2 h-[450px] w-[450px] -translate-x-1/2 rounded-full bg-red-950/15 blur-3xl" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-10 pb-24 md:pt-16 md:pb-28">
-        {/* Left Hero Image */}
-        <div className="hidden lg:block absolute left-0 bottom-0 w-[32%] pointer-events-none">
-          <img
-            src={heroImage}
-            alt="TangyBites Food"
-            draggable={false}
-            className="
-        w-[260px]
-        xl:w-[330px]
-        2xl:w-[400px]
-        object-contain
-        drop-shadow-[0_35px_60px_rgba(0,0,0,0.35)]
-        select-none
-      "
-          />
-        </div>
+        <div className="absolute left-[8%] top-[28%] h-2.5 w-2.5 rounded-full bg-yellow-200/70" />
 
-        {/* Hero Content */}
-        <div className="relative z-10 flex justify-center">
-          <div className="w-full max-w-3xl text-center">
-            <span className="inline-flex items-center gap-2 bg-white/90 text-orange-600 text-xs font-bold px-4 py-2 rounded-full shadow">
-              <Zap size={14} className="fill-orange-500 text-orange-500" />
-              Delivering in ~20 minutes
-            </span>
+        <div className="absolute bottom-[24%] left-[22%] h-2 w-2 rounded-full bg-white/40" />
 
-            <h1 className="mt-6 text-white font-extrabold leading-tight text-4xl sm:text-5xl xl:text-6xl">
-              Cravings hit.
-              <br />
-              <span className="text-yellow-200">TangyBites</span> delivers.
-            </h1>
+        <div className="absolute right-[12%] top-[24%] h-3 w-3 rounded-full bg-yellow-200/70" />
 
-            <p className="mt-5 text-orange-50 text-base sm:text-lg max-w-xl mx-auto">
-              Fresh meals and groceries from your favourite local spots — hot,
-              fast and always a little zesty.
-            </p>
+        <div className="absolute bottom-[28%] right-[7%] h-2.5 w-2.5 rounded-full bg-white/30" />
 
-            {/* ---------- SEARCH BAR ---------- */}
+        <div
+          className="absolute inset-0 opacity-[0.025]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
+          }}
+        />
+      </div>
 
-            <div className="mt-8 max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-2 flex flex-col sm:flex-row gap-2">
-              <div className="relative flex-1">
-                <button
-                  onClick={() => setLocOpen((v) => !v)}
-                  className="w-full flex items-center gap-2 px-4 py-3 rounded-xl text-left hover:bg-orange-50 transition"
-                >
-                  <MapPin size={18} className="text-orange-500" />
+      {/* Hero Container */}
+      <div className="relative z-10 mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-10 xl:px-12">
+        <div
+          className="
+            grid
+            min-h-[650px]
+            grid-cols-1
+            items-center
+            py-10
+            lg:grid-cols-[0.82fr_1.5fr_0.82fr]
+            lg:gap-4
+            lg:py-12
+            xl:min-h-[690px]
+            xl:grid-cols-[0.85fr_1.5fr_0.85fr]
+            xl:gap-8
+          "
+        >
+          {/* Left Food Image */}
+          <div className="relative hidden h-full min-h-[560px] items-center justify-center lg:flex">
+            <div className="absolute left-1/2 top-1/2 h-[360px] w-[250px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-300/10 blur-3xl" />
 
-                  <span className="truncate text-sm">{location}</span>
-
-                  <ChevronDown size={16} className="ml-auto text-gray-400" />
-                </button>
-
-                {locOpen && (
-                  <div className="absolute left-0 right-0 top-full mt-2 bg-white rounded-xl shadow-xl border border-orange-100 overflow-hidden z-20">
-                    {LOCATIONS.map((loc) => (
-                      <button
-                        key={loc}
-                        onClick={() => {
-                          setLocation(loc);
-                          setLocOpen(false);
-                        }}
-                        className="w-full text-left px-4 py-3 hover:bg-orange-50"
-                      >
-                        {loc}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="hidden sm:block w-px bg-orange-100 my-2" />
-
-              <div className="flex-[1.3] flex items-center gap-2 px-4 py-3">
-                <Search size={18} className="text-orange-500" />
-
-                <input
-                  value={query}
-                  onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Search for dishes, cuisines, snacks..."
-                  className="w-full outline-none text-sm placeholder:text-gray-400"
-                />
-              </div>
-
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 rounded-xl transition">
-                Find Food
-              </button>
+            <div className="relative z-10 flex h-[520px] w-full items-center justify-center xl:h-[560px]">
+              <img
+                src={heroImage}
+                alt="Traditional South Indian food served on a banana leaf"
+                draggable={false}
+                className="
+                  hero-leaf
+                  h-full
+                  w-auto
+                  max-w-full
+                  select-none
+                  object-contain
+                  drop-shadow-[0_25px_40px_rgba(0,0,0,0.4)]
+                "
+              />
             </div>
 
-            {/* ---------- TAGS ---------- */}
+            {/* Rating Card */}
+            <div
+              className="
+                absolute
+                left-0
+                top-[18%]
+                z-20
+                hidden
+                items-center
+                gap-2.5
+                rounded-2xl
+                border
+                border-white/30
+                bg-white/95
+                px-3
+                py-2.5
+                shadow-xl
+                backdrop-blur-md
+                xl:flex
+              "
+            >
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-100">
+                <Star size={17} className="fill-yellow-400 text-yellow-400" />
+              </div>
 
-            <div className="mt-7 flex flex-wrap gap-3 justify-center">
-              {[
-                "🔥 Up to 60% OFF",
-                "⭐ 4.8 Rated Restaurants",
-                "🚀 Free Delivery over ₹300",
-              ].map((tag) => (
-                <span
-                  key={tag}
-                  className="bg-white/15 backdrop-blur-md text-white px-4 py-2 rounded-full"
-                >
-                  {tag}
+              <div>
+                <p className="text-[10px] font-medium text-stone-400">
+                  Loved by foodies
+                </p>
+
+                <p className="text-xs font-extrabold text-stone-800">
+                  4.8 Rating
+                </p>
+              </div>
+            </div>
+
+            {/* Delivery Card */}
+            <div
+              className="
+                absolute
+                bottom-[17%]
+                right-0
+                z-20
+                hidden
+                items-center
+                gap-2.5
+                rounded-2xl
+                border
+                border-white/30
+                bg-white/95
+                px-3
+                py-2.5
+                shadow-xl
+                backdrop-blur-md
+                xl:flex
+              "
+            >
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-green-100">
+                <Truck size={17} className="text-green-600" />
+              </div>
+
+              <div>
+                <p className="text-[10px] font-medium text-stone-400">
+                  Fast delivery
+                </p>
+
+                <p className="text-xs font-extrabold text-stone-800">
+                  At your doorstep
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Content */}
+          <div className="relative z-30 flex min-w-0 items-center justify-center">
+            <div className="mx-auto w-full max-w-[650px] text-center">
+              {/* Delivery Badge */}
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/15 px-3.5 py-1.5 text-[11px] font-bold text-white shadow-lg backdrop-blur-md sm:text-xs">
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-300 text-orange-700">
+                  <Zap size={13} className="fill-current" />
                 </span>
-              ))}
+
+                <span>Delivering fresh food in ~20 minutes</span>
+
+                <span className="h-1.5 w-1.5 rounded-full bg-green-300" />
+              </div>
+
+              {/* Heading */}
+              <h1
+                className="
+                  mx-auto
+                  text-[2.65rem]
+                  font-black
+                  leading-[0.96]
+                  tracking-tight
+                  text-white
+                  sm:text-5xl
+                  md:text-[3.5rem]
+                  xl:text-[4rem]
+                "
+              >
+                Cravings
+                <br />
+                <span className="relative inline-block">
+                  hit.
+                  <span
+                    className="
+                      absolute
+                      -bottom-1
+                      left-1/2
+                      h-1
+                      w-16
+                      -translate-x-1/2
+                      rounded-full
+                      bg-yellow-300
+                      sm:h-1.5
+                      sm:w-20
+                    "
+                  />
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-yellow-200 via-yellow-100 to-white bg-clip-text text-transparent">
+                  TangyBites
+                </span>
+                <span className="text-yellow-200"> delivers.</span>
+              </h1>
+
+              {/* Description */}
+              <p
+                className="
+                  mx-auto
+                  mt-5
+                  max-w-[540px]
+                  text-sm
+                  leading-6
+                  text-orange-50
+                  sm:text-base
+                "
+              >
+                Fresh meals, crispy snacks and refreshing drinks from your
+                favourite local spots — hot, fast and always a little zesty.
+              </p>
+
+              {/* Search */}
+              <div className="relative mx-auto mt-6 w-full max-w-[620px]">
+                <div className="absolute -inset-1 rounded-[20px] bg-yellow-300/20 blur-lg" />
+
+                <div
+                  className="
+                    relative
+                    rounded-[18px]
+                    border
+                    border-white/60
+                    bg-white
+                    p-1.5
+                    shadow-[0_20px_50px_rgba(120,40,0,0.25)]
+                  "
+                >
+                  <div className="flex flex-col gap-1.5 sm:flex-row">
+                    {/* Location */}
+                    <div className="relative min-w-0 flex-[0.9]">
+                      <button
+                        type="button"
+                        onClick={() => setLocOpen((value) => !value)}
+                        className="
+                          flex
+                          w-full
+                          items-center
+                          gap-2.5
+                          rounded-xl
+                          px-3
+                          py-2.5
+                          text-left
+                          transition
+                          hover:bg-orange-50
+                        "
+                      >
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100">
+                          <MapPin size={15} className="text-orange-500" />
+                        </span>
+
+                        <div className="min-w-0 flex-1">
+                          <p className="text-[8px] font-bold uppercase tracking-wider text-stone-400">
+                            Deliver to
+                          </p>
+
+                          <p className="truncate text-xs font-bold text-stone-700">
+                            {location}
+                          </p>
+                        </div>
+
+                        <ChevronDown
+                          size={14}
+                          className={`shrink-0 text-stone-400 transition-transform ${
+                            locOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+
+                      {/* Location Dropdown */}
+                      {locOpen && (
+                        <div
+                          className="
+                            absolute
+                            left-0
+                            right-0
+                            top-full
+                            z-50
+                            mt-2
+                            overflow-hidden
+                            rounded-xl
+                            border
+                            border-orange-100
+                            bg-white
+                            p-1.5
+                            text-left
+                            shadow-2xl
+                          "
+                        >
+                          {LOCATIONS.map((loc) => (
+                            <button
+                              key={loc}
+                              type="button"
+                              onClick={() => {
+                                setLocation(loc);
+                                setLocOpen(false);
+                              }}
+                              className="
+                                flex
+                                w-full
+                                items-center
+                                gap-2
+                                rounded-lg
+                                px-3
+                                py-2.5
+                                text-left
+                                text-xs
+                                font-medium
+                                text-stone-600
+                                transition
+                                hover:bg-orange-50
+                                hover:text-orange-600
+                              "
+                            >
+                              <MapPin
+                                size={13}
+                                className="shrink-0 text-orange-400"
+                              />
+
+                              <span className="truncate">{loc}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Divider */}
+                    <div className="hidden w-px bg-orange-100 sm:block" />
+
+                    {/* Search Input */}
+                    <div className="flex min-w-0 flex-1 items-center gap-2 px-3 py-2">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100">
+                        <Search size={15} className="text-orange-500" />
+                      </span>
+
+                      <input
+                        type="text"
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Search dishes, cuisines..."
+                        className="
+                          min-w-0
+                          w-full
+                          bg-transparent
+                          text-xs
+                          font-medium
+                          text-stone-700
+                          outline-none
+                          placeholder:text-stone-400
+                        "
+                      />
+                    </div>
+
+                    {/* Find Food */}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setLocOpen(false);
+                      }}
+                      className="
+                        group
+                        flex
+                        shrink-0
+                        items-center
+                        justify-center
+                        gap-1.5
+                        rounded-xl
+                        bg-orange-500
+                        px-5
+                        py-2.5
+                        text-xs
+                        font-extrabold
+                        text-white
+                        shadow-md
+                        shadow-orange-500/20
+                        transition-all
+                        hover:bg-orange-600
+                        hover:shadow-lg
+                        active:scale-[0.98]
+                      "
+                    >
+                      Find Food
+                      <ArrowRight
+                        size={14}
+                        className="transition-transform group-hover:translate-x-0.5"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Tags */}
+              <div className="mt-5 flex flex-wrap justify-center gap-1.5">
+                {QUICK_TAGS.map((tag) => {
+                  const Icon = tag.icon;
+
+                  return (
+                    <span
+                      key={tag.text}
+                      className="
+                        inline-flex
+                        items-center
+                        gap-1.5
+                        rounded-full
+                        border
+                        border-white/20
+                        bg-white/10
+                        px-3
+                        py-1.5
+                        text-[10px]
+                        font-bold
+                        text-white
+                        backdrop-blur-md
+                        sm:text-[11px]
+                      "
+                    >
+                      <Icon size={13} className="text-yellow-200" />
+
+                      {tag.text}
+                    </span>
+                  );
+                })}
+              </div>
+
+              {/* Trust Row */}
+              <div
+                className="
+                  mx-auto
+                  mt-5
+                  flex
+                  max-w-[500px]
+                  items-center
+                  justify-center
+                  gap-4
+                  text-[10px]
+                  text-orange-100
+                  sm:gap-6
+                  sm:text-xs
+                "
+              >
+                <div className="flex items-center gap-1.5">
+                  <Star size={13} className="fill-yellow-300 text-yellow-300" />
+
+                  <span>
+                    <strong className="text-white">4.8/5</strong> rated
+                  </span>
+                </div>
+
+                <span className="h-4 w-px bg-white/20" />
+
+                <div className="flex items-center gap-1.5">
+                  <Clock3 size={13} className="text-yellow-200" />
+
+                  <span>
+                    <strong className="text-white">20 min</strong> delivery
+                  </span>
+                </div>
+
+                <span className="hidden h-4 w-px bg-white/20 sm:block" />
+
+                <div className="hidden items-center gap-1.5 sm:flex">
+                  <Truck size={13} className="text-yellow-200" />
+
+                  <span>
+                    <strong className="text-white">₹0</strong> over ₹300
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Food Image */}
+          <div className="relative hidden h-full min-h-[560px] items-center justify-center lg:flex">
+            <div className="absolute left-1/2 top-1/2 h-[380px] w-[380px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-300/15 blur-3xl" />
+
+            <div
+              className="
+                absolute
+                left-1/2
+                top-1/2
+                h-[410px]
+                w-[410px]
+                -translate-x-1/2
+                -translate-y-1/2
+                rounded-full
+                border
+                border-white/10
+              "
+            />
+
+            {/* Static Food Image */}
+            <div className="relative z-10 flex h-[500px] w-full items-center justify-center xl:h-[550px]">
+              <img
+                src={rightHeroImage}
+                alt="Delicious Indian food"
+                draggable={false}
+                className="
+                  h-full
+                  w-full
+                  select-none
+                  object-contain
+                  drop-shadow-[0_30px_45px_rgba(0,0,0,0.4)]
+                "
+              />
+            </div>
+
+            {/* Decorative Sparkle */}
+            <div className="absolute right-[12%] top-[18%] flex h-8 w-8 items-center justify-center rounded-full bg-white/15 backdrop-blur-md">
+              <Sparkles size={14} className="text-yellow-200" />
+            </div>
+          </div>
+
+          {/* Mobile Food Visual */}
+          <div className="order-first flex items-center justify-center lg:hidden">
+            <div className="relative flex h-[240px] w-full max-w-[480px] items-center justify-center sm:h-[290px]">
+              <img
+                src={heroImage}
+                alt="Traditional South Indian food"
+                draggable={false}
+                className="
+                  absolute
+                  left-0
+                  h-[250px]
+                  w-auto
+                  max-w-[55%]
+                  object-contain
+                  drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)]
+                  sm:h-[290px]
+                "
+              />
+
+              <img
+                src={rightHeroImage}
+                alt="Delicious Indian food"
+                draggable={false}
+                className="
+                  absolute
+                  right-0
+                  h-[215px]
+                  w-[60%]
+                  object-contain
+                  drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)]
+                  sm:h-[260px]
+                "
+              />
             </div>
           </div>
         </div>
-
-        {/* Right Image (Optional) */}
-        {/* 
-  <div className="hidden lg:block absolute right-0 bottom-0 w-[28%] pointer-events-none">
-    <img
-      src={rightHeroImage}
-      alt="Drink"
-      className="ml-auto w-[240px] xl:w-[320px] 2xl:w-[380px] object-contain drop-shadow-[0_35px_60px_rgba(0,0,0,0.35)]"
-    />
-  </div>
-  */}
       </div>
 
-      {/* Bottom Divider */}
+      {/* Leaf Animation */}
+      <style>{`
+        @media (prefers-reduced-motion: no-preference) {
+          .hero-leaf {
+            animation: leafFloat 7s ease-in-out infinite;
+          }
+        }
 
-      {/* <svg
-        className="absolute bottom-0 left-0 w-full h-10"
-        viewBox="0 0 1200 40"
-        preserveAspectRatio="none"
-      >
-        <path
-          fill="#FFF7ED"
-          d="M0,40 L0,10 L40,30 L80,10 L120,30 L160,10 L200,30 L240,10 L280,30 L320,10 L360,30 L400,10 L440,30 L480,10 L520,30 L560,10 L600,30 L640,10 L680,30 L720,10 L760,30 L800,10 L840,30 L880,10 L920,30 L960,10 L1000,30 L1040,10 L1080,30 L1120,10 L1160,30 L1200,10 L1200,40 Z"
-        />
-      </svg> */}
+        @keyframes leafFloat {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+
+          50% {
+            transform: translateY(-6px);
+          }
+        }
+      `}</style>
     </section>
   );
 }
