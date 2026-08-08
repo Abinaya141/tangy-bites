@@ -29,10 +29,10 @@ export const CATEGORIES = [
 ];
 
 export const SORT_OPTIONS = [
-  { id: "popular", label: "🔥 Popular" },
-  { id: "price-low", label: "💸 Price: Low to High" },
-  { id: "price-high", label: "💰 Price: High to Low" },
-  { id: "rating", label: "⭐ Top Rated" },
+  { id: "popular", label: "Popular" },
+  { id: "price-low", label: "Price: Low to High" },
+  { id: "price-high", label: "Price: High to Low" },
+  { id: "rating", label: "Top Rated" },
 ];
 
 export const ITEMS = [
