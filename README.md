@@ -1,114 +1,106 @@
-# TangyBites — Food Ordering App
+# 🍊 TangyBites
 
-A modern, responsive food ordering web application built with React, Vite, and Tailwind CSS.
+**Order No. 01 — Food Ordering, Reimagined**
 
-TangyBites provides a smooth food-ordering experience with live search, category filtering, sorting, favorites, cart management, and a complete client-side checkout flow.
+A fast, frontend-only food ordering app built with React, Vite, and Tailwind CSS. No backend. No database. No real payments. Just a fully working order flow, from craving to (simulated) doorstep.
 
-> **Demo project:** This application is frontend-only. No backend, database, or real payment processing is connected.
-
----
-
-## Project Preview
-
-![TangyBites Food Ordering App](./public/tangybites-preview.png)
+> **This is a demo ticket, not a real receipt.** Everything — cart, checkout, payment, delivery status — runs entirely in the browser.
 
 ---
 
-## Overview
+## Order Preview
 
-TangyBites is designed as a clean and user-friendly food ordering interface inspired by modern food delivery platforms.
+![TangyBites Food Ordering App](/src/assets/images/main.png)
 
-The application demonstrates how a complete ordering experience can be built using React state management without requiring a backend.
-
-Users can:
-
-- Browse available food items
-- Search for dishes
-- Filter items by category
-- Sort items by popularity, price, or rating
-- Add and remove items from the cart
-- Adjust item quantities
-- Mark dishes as favorites
-- View live cart totals
-- Proceed through a checkout flow
-- Select a mock payment method
-- Complete a simulated order
+![TangyBites Menu](/src/assets/images/menu.png)
 
 ---
 
-## Features
+## What's on the Menu
 
-### Food Discovery
+TangyBites is a clean, modern take on the food-delivery interface — built to show what a complete ordering experience looks like using nothing but React state. No server required to take your order.
 
-- Live search across food item names
-- Category-based filtering
-- Popularity sorting
-- Price sorting
-- Rating-based sorting
-- Responsive food card layout
-- Food ratings and promotional labels
+From the moment someone lands on the page to the moment their (fake) order is confirmed, the whole journey lives client-side:
 
-### Cart Management
+- Browse the full menu
+- Search for a craving by name
+- Filter by category
+- Sort by popularity, price, or rating
+- Add, remove, and adjust quantities in the cart
+- Save favorites for next time
+- Watch live totals update as the cart changes
+- Walk through checkout and pick a payment method
+- Get an order confirmation, complete with delivery ETA
 
-- Add items to cart
-- Increase or decrease quantities
-- Remove items automatically when quantity reaches zero
-- Live item count
-- Dynamic subtotal calculation
-- Delivery fee calculation
-- Free delivery threshold
-- Floating cart summary bar
-- Slide-in cart drawer
+---
+
+## What's Inside
+
+### Discovery
+
+The part where cravings get found.
+
+- Live search across dish names
+- Category tabs for quick filtering
+- Sort by popularity, price, or rating
+- Responsive card grid with ratings and promo tags
+
+### Cart
+
+The part where the order takes shape.
+
+- Add to cart with a tap
+- Increase or decrease quantity inline
+- Auto-remove when quantity hits zero
+- Live subtotal, delivery fee, and free-delivery threshold logic
+- Floating mini cart bar + full slide-in drawer
 
 ### Favorites
 
-- Add or remove dishes from favorites
-- Visual favorite state using Lucide icons
+The part that remembers what you liked.
+
+- Toggle favorite state per dish
+- Clear visual feedback via Lucide icons
 
 ### Checkout
 
-- Delivery address input
-- Mobile number validation
-- Cash on Delivery option
-- Card payment mock interface
-- UPI payment mock interface
-- Dynamic order total
-- Client-side checkout validation
+The part that closes the ticket.
+
+- Delivery address + validated mobile number
+- Three payment paths: Cash on Delivery, Card (mock), UPI (mock)
+- Dynamic, always-accurate order total
+- Full client-side validation before confirming
 
 ### Order Confirmation
 
-- Animated order placement state
-- Kitchen preparation status
-- Order confirmation screen
-- Estimated delivery time
-- Automatic cart reset after confirmation
+The part where the kitchen gets the memo.
 
-### Responsive Design
+- Animated "placing order" state
+- Kitchen-received confirmation
+- Estimated delivery window
+- Cart automatically resets after confirmation
 
-The application is optimized for:
+### Responsive by Default
 
-- Desktop
-- Laptop
-- Tablet
-- Mobile devices
+Built to hold up cleanly on desktop, laptop, tablet, and mobile — no separate mobile build required.
 
 ---
 
-## Tech Stack
+## Built With
 
-| Technology | Purpose |
-|---|---|
-| React | User interface and application state |
-| Vite | Development and production build tool |
-| Tailwind CSS | Styling and responsive design |
-| Lucide React | UI icons |
-| JavaScript | Application logic |
-| HTML5 | Application structure |
-| CSS | Custom animations and styling |
+| Technology   | Role                            |
+| ------------ | ------------------------------- |
+| React        | UI and application state        |
+| Vite         | Dev server and production build |
+| Tailwind CSS | Styling and responsive layout   |
+| Lucide React | Icon set                        |
+| JavaScript   | App logic                       |
+| HTML5        | Structure                       |
+| CSS          | Custom animation and styling    |
 
 ---
 
-## Project Structure
+## Project Layout
 
 ```text
 tangybites/
@@ -151,3 +143,29 @@ tangybites/
 ├── vite.config.js
 ├── .gitignore
 └── README.md
+```
+
+---
+
+## Running It Locally
+
+```bash
+# install dependencies
+npm install
+
+# start the dev server
+npm run dev
+
+# build for production
+npm run build
+```
+
+---
+
+## A Note on the Demo
+
+Every part of the ordering flow - search, cart, checkout, payment, delivery status — is simulated entirely in the browser. No data is sent anywhere, no card details are stored, and no real order is ever placed. Consider it a working prototype of the full experience, ready to be wired up to a real backend when the time comes.
+
+---
+
+**TangyBites** — hot, fast, and always a little zesty. 🌶️
