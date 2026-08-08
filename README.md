@@ -1,85 +1,153 @@
-# 🍊 #TangyBites — Food Ordering App
+# TangyBites — Food Ordering App
 
-A cute, fully client-side food ordering UI built with **React + Vite + Tailwind CSS**.
-No backend required — search, filter, sort, add to cart, and check out through a
-mock payment flow, all running in the browser.
+A modern, responsive food ordering web application built with React, Vite, and Tailwind CSS.
 
-## ✨ Features
+TangyBites provides a smooth food-ordering experience with live search, category filtering, sorting, favorites, cart management, and a complete client-side checkout flow.
 
-- 🔍 **Live search** across dish names
-- 🗂️ **Category filters** (Beverages, Snacks, Rice, Main Course, Desserts)
-- ↕️ **Sort** by popularity, price, or rating
-- ❤️ Favorite/wishlist toggle per dish
-- 🛒 Slide-in cart drawer with live totals & free-delivery threshold
-- 🧾 **Checkout page** — address, phone, and a mock payment step (Cash / Card / UPI)
-- 🛵 Animated "placing order" + confirmation screen (frontend-only simulation)
-- 📱 Fully responsive, mobile-first layout
+> **Demo project:** This application is frontend-only. No backend, database, or real payment processing is connected.
 
-> ⚠️ This app has **no backend and processes no real payments** — the checkout
-> and "place order" flow are simulated entirely on the client for demo purposes.
+---
 
-## 📁 Project Structure
+## Project Preview
 
-```
+![TangyBites Food Ordering App](./public/tangybites-preview.png)
+
+---
+
+## Overview
+
+TangyBites is designed as a clean and user-friendly food ordering interface inspired by modern food delivery platforms.
+
+The application demonstrates how a complete ordering experience can be built using React state management without requiring a backend.
+
+Users can:
+
+- Browse available food items
+- Search for dishes
+- Filter items by category
+- Sort items by popularity, price, or rating
+- Add and remove items from the cart
+- Adjust item quantities
+- Mark dishes as favorites
+- View live cart totals
+- Proceed through a checkout flow
+- Select a mock payment method
+- Complete a simulated order
+
+---
+
+## Features
+
+### Food Discovery
+
+- Live search across food item names
+- Category-based filtering
+- Popularity sorting
+- Price sorting
+- Rating-based sorting
+- Responsive food card layout
+- Food ratings and promotional labels
+
+### Cart Management
+
+- Add items to cart
+- Increase or decrease quantities
+- Remove items automatically when quantity reaches zero
+- Live item count
+- Dynamic subtotal calculation
+- Delivery fee calculation
+- Free delivery threshold
+- Floating cart summary bar
+- Slide-in cart drawer
+
+### Favorites
+
+- Add or remove dishes from favorites
+- Visual favorite state using Lucide icons
+
+### Checkout
+
+- Delivery address input
+- Mobile number validation
+- Cash on Delivery option
+- Card payment mock interface
+- UPI payment mock interface
+- Dynamic order total
+- Client-side checkout validation
+
+### Order Confirmation
+
+- Animated order placement state
+- Kitchen preparation status
+- Order confirmation screen
+- Estimated delivery time
+- Automatic cart reset after confirmation
+
+### Responsive Design
+
+The application is optimized for:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile devices
+
+---
+
+## Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| React | User interface and application state |
+| Vite | Development and production build tool |
+| Tailwind CSS | Styling and responsive design |
+| Lucide React | UI icons |
+| JavaScript | Application logic |
+| HTML5 | Application structure |
+| CSS | Custom animations and styling |
+
+---
+
+## Project Structure
+
+```text
 tangybites/
-├── public/                      # Static assets (favicon, etc.)
+│
+├── public/
+│   └── tangybites-preview.png
+│
 ├── src/
+│   ├── assets/
+│   │   └── images/
+│   │
 │   ├── components/
-│   │   ├── Header.jsx           # Top bar — brand, search, cart button
-│   │   ├── CategoryTabs.jsx     # Category filter chips + sort dropdown
-│   │   ├── FoodCard.jsx         # Individual dish card (add/qty/favorite)
-│   │   ├── EmptyState.jsx       # "No dishes found" state
-│   │   ├── MiniCartBar.jsx      # Floating bottom cart summary bar
-│   │   ├── CartDrawer.jsx       # Slide-in cart panel (routes to checkout)
-│   │   ├── CheckoutPage.jsx     # Address + mock payment + confirm
-│   │   └── DeliveryAnimation.jsx# Loading + success animation
+│   │   ├── Header.jsx
+│   │   ├── Hero.jsx
+│   │   ├── CategoryTabs.jsx
+│   │   ├── FoodCard.jsx
+│   │   ├── EmptyState.jsx
+│   │   ├── MiniCartBar.jsx
+│   │   ├── CartDrawer.jsx
+│   │   ├── CheckoutPage.jsx
+│   │   └── DeliveryAnimation.jsx
+│   │
 │   ├── data/
-│   │   └── items.js             # Menu items, categories, sort options
+│   │   └── items.js
+│   │
 │   ├── styles/
-│   │   └── global.css           # Fonts, Tailwind directives, keyframes
+│   │   └── global.css
+│   │
 │   ├── utils/
-│   │   └── currency.js          # ₹ currency formatter
-│   ├── App.jsx                  # App state, filtering/sorting, layout
-│   └── main.jsx                 # React entry point
+│   │   └── currency.js
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
 ├── index.html
 ├── package.json
+├── package-lock.json
 ├── postcss.config.js
 ├── tailwind.config.js
 ├── vite.config.js
+├── .gitignore
 └── README.md
-```
-
-## 🚀 Getting Started
-
-```bash
-npm install
-npm run dev
-```
-
-Then open the printed local URL (usually `http://localhost:5173`).
-
-## 🏗️ Build for production
-
-```bash
-npm run build
-npm run preview
-```
-
-## 🛠️ Tech Stack
-
-- React 18
-- Vite 5
-- Tailwind CSS 3
-- lucide-react (icons)
-
-## 🧾 Checkout Flow (no backend)
-
-1. Add dishes to cart from the menu grid.
-2. Open the cart drawer → **Proceed to Checkout**.
-3. Fill in a delivery address + phone, pick a payment method
-   (Cash on Delivery / Card / UPI — all mock inputs).
-4. **Confirm & Pay** triggers a simulated "placing order" animation,
-   then an order-confirmed screen, then the cart resets.
-
-All state lives in React (`useState`/`useMemo`) — nothing is persisted
-or sent to a server.
