@@ -19,7 +19,7 @@ export default function MiniCartBar({ count, total, onClick }) {
           items-center
           justify-between
           gap-4
-          rounded-2xl
+          rounded
           bg-orange-600
           px-5
           py-3.5
@@ -40,7 +40,7 @@ export default function MiniCartBar({ count, total, onClick }) {
               shrink-0
               items-center
               justify-center
-              rounded-full
+              rounded
               bg-white/15
             "
           >

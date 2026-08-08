@@ -134,7 +134,7 @@ export default function CartDrawer({
                 </div>
 
                 <div className="min-w-0">
-                  <h2 className="font-display text-lg font-extrabold text-stone-800">
+                  <h2 className="text-lg font-extrabold text-stone-800">
                     Your Cart
                   </h2>
 
@@ -406,15 +406,15 @@ export default function CartDrawer({
                     items-center
                     justify-center
                     gap-2
-                    rounded-xl
-                    bg-orange-500
+                    rounded
+                    bg-orange-600
                     py-3.5
                     font-bold
                     text-white
                     shadow-md
                     shadow-orange-500/20
                     transition-all
-                    hover:bg-orange-600
+                    hover:bg-orange-700
                     hover:shadow-lg
                     active:scale-[0.98]
                   "

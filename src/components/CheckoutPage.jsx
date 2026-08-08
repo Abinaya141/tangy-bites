@@ -56,20 +56,12 @@ export default function CheckoutPage({
     card.expiry.trim().length >= 4 &&
     card.cvv.length >= 3;
 
-  const isUpiValid =
-    upiId.trim().length > 3 && upiId.includes("@");
+  const isUpiValid = upiId.trim().length > 3 && upiId.includes("@");
 
   const isPaymentValid =
-    method === "cod"
-      ? true
-      : method === "card"
-        ? isCardValid
-        : isUpiValid;
+    method === "cod" ? true : method === "card" ? isCardValid : isUpiValid;
 
-  const isValid =
-    isAddressValid &&
-    isPhoneValid &&
-    isPaymentValid;
+  const isValid = isAddressValid && isPhoneValid && isPaymentValid;
 
   const handleConfirm = () => {
     if (!isValid) return;
@@ -96,7 +88,7 @@ export default function CheckoutPage({
         </button>
 
         <div>
-          <h2 className="flex items-center gap-2 font-display text-lg font-extrabold text-stone-800">
+          <h2 className="flex items-center gap-2 text-lg font-extrabold text-stone-800">
             <ReceiptText size={19} className="text-orange-500" />
             Checkout
           </h2>
@@ -139,7 +131,7 @@ export default function CheckoutPage({
                 block
                 w-full
                 resize-none
-                rounded-xl
+                rounded
                 border
                 border-orange-200
                 bg-white
@@ -189,7 +181,7 @@ export default function CheckoutPage({
                 className="
                   block
                   w-full
-                  rounded-xl
+                  rounded
                   border
                   border-orange-200
                   bg-white
@@ -233,9 +225,18 @@ export default function CheckoutPage({
                     type="button"
                     onClick={() => setMethod(payment.id)}
                     className={`
-                      flex items-center gap-3 rounded-xl border
-                      px-3.5 py-3 text-left text-sm font-semibold
-                      transition active:scale-[0.99]
+                      flex
+                      items-center
+                      gap-3
+                      rounded
+                      border
+                      px-3.5
+                      py-3
+                      text-left
+                      text-sm
+                      font-semibold
+                      transition
+                      active:scale-[0.99]
                       ${
                         active
                           ? "border-orange-500 bg-orange-50 text-orange-700 shadow-sm"
@@ -257,19 +258,13 @@ export default function CheckoutPage({
                       <Icon size={18} />
                     </span>
 
-                    <span className="flex-1">
-                      {payment.label}
-                    </span>
+                    <span className="flex-1">{payment.label}</span>
 
                     <span
                       className={`
                         flex h-4 w-4 items-center justify-center
                         rounded-full border-2
-                        ${
-                          active
-                            ? "border-orange-500"
-                            : "border-stone-300"
-                        }
+                        ${active ? "border-orange-500" : "border-stone-300"}
                       `}
                     >
                       {active && (
@@ -316,7 +311,7 @@ export default function CheckoutPage({
                     className="
                       block
                       w-full
-                      rounded-xl
+                      rounded
                       border
                       border-orange-200
                       bg-white
@@ -352,7 +347,7 @@ export default function CheckoutPage({
                     className="
                       block
                       w-1/2
-                      rounded-xl
+                      rounded
                       border
                       border-orange-200
                       bg-white
@@ -386,7 +381,7 @@ export default function CheckoutPage({
                     className="
                       block
                       w-1/2
-                      rounded-xl
+                      rounded
                       border
                       border-orange-200
                       bg-white
@@ -433,7 +428,7 @@ export default function CheckoutPage({
                     className="
                       block
                       w-full
-                      rounded-xl
+                      rounded
                       border
                       border-orange-200
                       bg-white
@@ -457,15 +452,16 @@ export default function CheckoutPage({
             )}
 
             {/* Security Note */}
-            <div className="mt-3 flex items-start gap-2 rounded-xl bg-white px-3 py-2.5">
+
+            <div className="mt-3 flex items-start gap-2 rounded-l bg-white px-3 py-2.5">
               <ShieldCheck
                 size={15}
                 className="mt-0.5 shrink-0 text-green-500"
               />
 
               <p className="text-[11px] leading-relaxed text-stone-400">
-                Demo checkout — no real payment is processed and no
-                information is sent to a server.
+                Demo checkout — no real payment is processed and no information
+                is sent to a server.
               </p>
             </div>
           </section>
@@ -481,16 +477,12 @@ export default function CheckoutPage({
 
         <div className="mb-2 flex justify-between text-sm text-stone-500">
           <span>Delivery fee</span>
-          <span>
-            {deliveryFee === 0 ? "Free" : currency(deliveryFee)}
-          </span>
+          <span>{deliveryFee === 0 ? "Free" : currency(deliveryFee)}</span>
         </div>
 
         <div className="mb-4 flex items-center justify-between border-t border-dashed border-orange-200 pt-2 text-base font-extrabold text-stone-800">
           <span>Total</span>
-          <span className="text-orange-600">
-            {currency(total)}
-          </span>
+          <span className="text-orange-600">{currency(total)}</span>
         </div>
 
         <button
@@ -498,8 +490,16 @@ export default function CheckoutPage({
           onClick={handleConfirm}
           disabled={!isValid}
           className={`
-            flex w-full items-center justify-center gap-2
-            rounded-xl py-3.5 font-bold shadow-md transition
+            flex
+            w-full
+            items-center
+            justify-center
+            gap-2
+            rounded-l
+            py-3.5
+            font-bold
+            shadow-md
+            transition
             ${
               isValid
                 ? "bg-orange-500 text-white hover:bg-orange-600 active:scale-[0.98]"

@@ -24,7 +24,7 @@ export default function DeliveryAnimation({ status }) {
           </div>
         </div>
 
-        <h2 className="font-display text-xl font-extrabold text-stone-800">
+        <h2 className="text-xl font-extrabold text-stone-800">
           Placing your order…
         </h2>
 
@@ -69,7 +69,7 @@ export default function DeliveryAnimation({ status }) {
             />
           </div>
         </div>
-        <h2 className="font-display text-2xl font-extrabold text-stone-800">
+        <h2 className="text-2xl font-extrabold text-stone-800">
           Order Confirmed!
         </h2>
 
